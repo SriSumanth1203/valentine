@@ -1,0 +1,306 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>For My Love ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      font-family:'Dancing Script', cursive;
+      background: linear-gradient(135deg,#ffe5ec,#ffc2d1);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
+      overflow:hidden;
+    }
+
+    h1{
+      font-size:48px;
+      margin-bottom:30px;
+    }
+
+    button{
+      padding:14px 32px;
+      font-size:22px;
+      border:none;
+      border-radius:40px;
+      cursor:pointer;
+      margin:10px;
+      transition: all 0.3s ease;
+    }
+
+    .yes{
+      background:#ff4d6d;
+      color:white;
+    }
+
+    .no{
+      background:#eee;
+      position:relative;
+    }
+
+    #final{
+      display:none;
+      font-size:44px;
+      animation: fade 1s ease forwards;
+    }
+
+    @keyframes fade{
+      from{opacity:0; transform:scale(0.8);}
+      to{opacity:1; transform:scale(1);}
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="main">
+  <h1>
+    Will you be my Valentine…<br>
+    again? ❤️
+  </h1>
+
+  <button class="yes" onclick="yesClick()">Always ❤️</button>
+  <button class="no" id="noBtn" onclick="noClick()">No 🙈</button>
+</div>
+
+<div id="final">
+  ❤️ Forever stuck with me ❤️<br>
+  You don’t have any other choice now 😄
+</div>
+
+<script>
+let noSize = 1;
+let clicks = 0;
+
+const noBtn = document.getElementById("noBtn");
+
+const messages = [
+  "No 🙈",
+  "Are you sure? 😏",
+  "Really? 🥺",
+  "Think again 😆",
+  "Last chance 😜"
+];
+
+function yesClick(){
+  document.getElementById("main").style.display="none";
+  document.getElementById("final").style.display="block";
+}
+
+function noClick(){
+  clicks++;
+
+  // shrink
+  noSize *= 0.7;
+  noBtn.style.transform = `scale(${noSize})`;
+
+  // move randomly
+  noBtn.style.position="absolute";
+  noBtn.style.left = Math.random()*80 + "%";
+  noBtn.style.top  = Math.random()*80 + "%";
+
+  // change text
+  if(clicks < messages.length){
+    noBtn.innerText = messages[clicks];
+  }
+
+  // disappear
+  if(clicks >= 5){
+    noBtn.style.display="none";
+    setTimeout(()=>{
+      alert("Poof! 😄 You don’t have other choice now ❤️");
+    },300);
+  }
+}
+</script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For My Love ❤️</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      height:100vh;
+      overflow:hidden;
+      background: linear-gradient(135deg,#ffd6e0,#ffc2d1,#ffe5ec);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* floating hearts */
+    .heart{
+      position:absolute;
+      color:#ff4d6d;
+      opacity:.25;
+      animation: float 7s linear infinite;
+    }
+
+    @keyframes float{
+      from{ transform:translateY(100vh);}
+      to{ transform:translateY(-10vh);}
+    }
+
+    .card{
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.3);
+      border-radius:30px;
+      padding:45px 35px;
+      width:90%;
+      max-width:420px;
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,.15);
+      animation: fadeIn .8s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(25px);}
+      to{opacity:1;}
+    }
+
+    h1{
+      font-family:'Dancing Script',cursive;
+      font-size:40px;
+      color:#ff2e63;
+      margin-bottom:20px;
+    }
+
+    p{
+      font-size:16px;
+      margin-bottom:25px;
+      color:#333;
+    }
+
+    button{
+      border:none;
+      border-radius:40px;
+      padding:12px 26px;
+      font-size:15px;
+      cursor:pointer;
+      transition:.3s;
+      margin:6px;
+    }
+
+    .primary{
+      background:#ff4d6d;
+      color:white;
+      box-shadow:0 6px 18px rgba(255,77,109,.4);
+    }
+
+    .secondary{
+      background:white;
+    }
+
+    .hidden{ display:none; }
+  </style>
+</head>
+
+<body>
+
+<script>
+/* floating hearts background */
+for(let i=0;i<20;i++){
+  const h=document.createElement("div");
+  h.innerHTML="❤";
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(Math.random()*18+14)+"px";
+  h.style.animationDuration=(Math.random()*5+5)+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+
+<!-- 1️⃣ WELCOME PAGE -->
+<div class="card" id="welcome">
+  <h1>Hey Sri ❤️</h1>
+  <p>
+    I made something small for you…<br>
+    Open it slowly 💌
+  </p>
+  <button class="primary" onclick="showQuestion()">Open</button>
+</div>
+
+
+<!-- 2️⃣ QUESTION PAGE -->
+<div class="card hidden" id="question">
+  <h1>You thought I wouldn’t ask you… again?</h1>
+  <p>Will you be my Valentine… forever?</p>
+
+  <button class="primary" onclick="yes()">ALWAYS ❤️</button>
+  <button class="secondary" id="noBtn">NO 🙈</button>
+</div>
+
+
+<!-- 3️⃣ FINAL PAGE -->
+<div class="card hidden" id="final">
+  <h1>Gotcha 😄❤️</h1>
+  <p>
+    I know that you will say yes❤️<br><br>
+    Love you forever baby
+  </p>
+</div>
+
+
+<script>
+function showQuestion(){
+  welcome.classList.add("hidden");
+  question.classList.remove("hidden");
+}
+
+/* shrinking NO */
+let scale=1;
+noBtn.onclick=()=>{
+  scale-=0.2;
+  noBtn.style.transform=`scale(${scale})`;
+
+  if(scale<=0.2){
+    noBtn.innerText="Poof ✨";
+    setTimeout(()=> noBtn.style.display="none",300);
+  }
+};
+
+/* YES */
+function yes(){
+  question.classList.add("hidden");
+  final.classList.remove("hidden");
+  confetti();
+}
+
+/* heart confetti */
+function confetti(){
+  for(let i=0;i<40;i++){
+    const c=document.createElement("div");
+    c.innerHTML="❤";
+    c.style.position="absolute";
+    c.style.left=Math.random()*100+"vw";
+    c.style.top="-20px";
+    c.style.color="#ff4d6d";
+    c.style.fontSize="20px";
+    c.style.animation="float 3s linear forwards";
+    document.body.appendChild(c);
+  }
+}
+</script>
+
+</body>
+</html>
